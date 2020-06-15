@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp1", "WinFormsApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClockApp", "..\ClockApp\ClockApp.csproj", "{45546CDC-F055-403E-8C1C-A7E831E33292}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonTestApp", "..\ButtonTestApp\ButtonTestApp.csproj", "{424B7607-66AB-4D4D-8FC8-E0A0E9267DA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{45546CDC-F055-403E-8C1C-A7E831E33292}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45546CDC-F055-403E-8C1C-A7E831E33292}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45546CDC-F055-403E-8C1C-A7E831E33292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{424B7607-66AB-4D4D-8FC8-E0A0E9267DA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{424B7607-66AB-4D4D-8FC8-E0A0E9267DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{424B7607-66AB-4D4D-8FC8-E0A0E9267DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{424B7607-66AB-4D4D-8FC8-E0A0E9267DA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
