@@ -43,7 +43,7 @@ namespace CheckBoxTestApp
         //        strTemp = label1.Text;
         //        int i = strTemp.IndexOf(s.Substring(0, 1));
         //        int j = i + s.Length;
-        //        label1.Text = strTemp.Remove(i, j - 1);
+        //        label1.Text = strTemp.Remove(i, j - 1);                               
         //    }
         //}
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

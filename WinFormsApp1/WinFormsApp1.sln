@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonTestApp", "..\ButtonT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckBoxTestApp", "..\CheckBoxTestApp\CheckBoxTestApp.csproj", "{BFF39E0E-BF5F-4BB0-A94A-9BF56E9C2033}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioButtonTestApp", "..\RadioButtonTestApp\RadioButtonTestApp.csproj", "{A198B9B0-08EC-435E-AAB4-98B43CA49F1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginApp", "..\LoginApp\LoginApp.csproj", "{627FD052-1AB2-4AEA-8B71-EF7C5377A5CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{BFF39E0E-BF5F-4BB0-A94A-9BF56E9C2033}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFF39E0E-BF5F-4BB0-A94A-9BF56E9C2033}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFF39E0E-BF5F-4BB0-A94A-9BF56E9C2033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A198B9B0-08EC-435E-AAB4-98B43CA49F1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A198B9B0-08EC-435E-AAB4-98B43CA49F1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A198B9B0-08EC-435E-AAB4-98B43CA49F1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A198B9B0-08EC-435E-AAB4-98B43CA49F1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{627FD052-1AB2-4AEA-8B71-EF7C5377A5CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{627FD052-1AB2-4AEA-8B71-EF7C5377A5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{627FD052-1AB2-4AEA-8B71-EF7C5377A5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{627FD052-1AB2-4AEA-8B71-EF7C5377A5CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
