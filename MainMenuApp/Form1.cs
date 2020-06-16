@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LoginApp
+namespace MainMenuApp
 {
     public partial class Form1 : Form
     {
@@ -17,14 +17,9 @@ namespace LoginApp
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void 편집EToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textBox3.Text = $"ID : {textBox1.Text}\r\nPassword : {textBox2.Text}\r\n";
-            if(textBox1.Text.ToUpper() == "ADMIN" && textBox2.Text.ToUpper() == "P@SSW0RD!")
-            {
-                MessageBox.Show("관리자 로그인");
-            }
-               
+
         }
     }
 }
