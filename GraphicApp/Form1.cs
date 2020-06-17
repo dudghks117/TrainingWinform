@@ -46,10 +46,10 @@ namespace GraphicApp
 
             Point[] pts =
             {
-                new Point(115,30), new Point(140, 90),
-                new Point(200,115), new Point(140, 140),
-                new Point(115,200), new Point(90, 140),
-                new Point(30,115), new Point(90, 90),
+                new Point(515,30), new Point(540, 90),
+                new Point(600,115), new Point(540, 140),
+                new Point(515,200), new Point(490, 140),
+                new Point(430,115), new Point(490, 90),
 
             };
             g.FillClosedCurve(Brushes.Yellow, pts);
