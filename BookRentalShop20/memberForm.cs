@@ -13,10 +13,10 @@ using MetroFramework.Forms;
 
 namespace BookRentalShop20
 {
-    public partial class DivForm : MetroForm
+    public partial class memberForm : MetroForm
     {
         string mode = "";
-        public DivForm()
+        public memberForm()
         {
             InitializeComponent();
         }
@@ -26,20 +26,22 @@ namespace BookRentalShop20
             UpdateData();   //  데이터그리드에 DB 데이터 로딩하기
         }
 
+
+
         private void UpdateData()
         {
             //throw new NotImplementedException();
             using (SqlConnection conn = new SqlConnection(Commons.CONSTRING))
             {
                 conn.Open();    //  DB열기
-                string strQuery = "SELECT Division, Names FROM divtbl"; //  검색할 쿼리문
-                                                                        // SqlCommand cmd = new SqlCommand(strQuery, conn);
+                string strQuery = "SELECT Idx, Names, Levels, Addr, Mobile, Email " +
+                                   " FROM dbo.membertbl "; //  검색할 쿼리문
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(strQuery, conn);    //  플러그에 쿼리문이랑 데이터 연결할꺼
                 DataSet ds = new DataSet(); //  데이터 통을 만듬
-                dataAdapter.Fill(ds, "divtbl");     //  데이터 통을 채움 divtbl이라는 이름으로
+                dataAdapter.Fill(ds, "membertbl");     //  데이터 통을 채움 divtbl이라는 이름으로
 
-                GrdDivTbl.DataSource = ds;      //  GrdDivtbl에 부어넣음
-                GrdDivTbl.DataMember = "divtbl";
+                GrdMemberTbl.DataSource = ds;      //  GrdDivtbl에 부어넣음
+                GrdMemberTbl.DataMember = "membertbl";
             }
         }
 
@@ -47,11 +49,16 @@ namespace BookRentalShop20
         {
             if(e.RowIndex > -1)
             {
-                DataGridViewRow data = GrdDivTbl.Rows[e.RowIndex];  //  Rows중에 한 행을 선택했으므로 DataGridViewRow이다.
-                TxtDivision.Text = data.Cells[0].Value.ToString();    //  Cells는 한 행이기 때문에 Division, Names가 들어가있음
+                DataGridViewRow data = GrdMemberTbl.Rows[e.RowIndex];  //  Rows중에 한 행을 선택했으므로 DataGridViewRow이다.
+                TxtIdx.Text = data.Cells[0].Value.ToString();    //  Cells는 한 행이기 때문에 Division, Names가 들어가있음
                 TxtNames.Text = data.Cells[1].Value.ToString();
-                TxtDivision.ReadOnly = true;
-                TxtDivision.BackColor = Color.Black;
+                CboLevels.SelectedIndex = CboLevels.FindString(data.Cells[2].Value.ToString());
+                TxtAddr.Text = data.Cells[3].Value.ToString();
+                TxtMobile.Text = data.Cells[4].Value.ToString();
+                TxtEmail.Text = data.Cells[5].Value.ToString();
+
+                TxtIdx.ReadOnly = true;
+                TxtIdx.BackColor = Color.Black;
 
                 mode = "UPDATE";    //수정은 UPDATE
             }
@@ -60,7 +67,8 @@ namespace BookRentalShop20
         private void BtnNew_Click(object sender, EventArgs e)
         {
             mode = "INSERT"; //신규는 INSERT
-            if (String.IsNullOrEmpty(TxtDivision.Text) || String.IsNullOrEmpty(TxtNames.Text))
+            if (String.IsNullOrEmpty(TxtAddr.Text) || String.IsNullOrEmpty(TxtNames.Text) ||
+                String.IsNullOrEmpty(TxtMobile.Text) || String.IsNullOrEmpty(TxtEmail.Text))
             {
                 MetroMessageBox.Show(this, "빈값은 저장할 수 없습니다", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -70,7 +78,9 @@ namespace BookRentalShop20
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            if(String.IsNullOrEmpty(TxtDivision.Text) || String.IsNullOrEmpty(TxtNames.Text))
+            mode = "UPDATE";
+            if(String.IsNullOrEmpty(TxtAddr.Text) || String.IsNullOrEmpty(TxtNames.Text) ||
+                String.IsNullOrEmpty(TxtMobile.Text) || String.IsNullOrEmpty(TxtEmail.Text))
             {
                 MetroMessageBox.Show(this, "빈값은 저장할 수 없습니다", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -80,10 +90,11 @@ namespace BookRentalShop20
 
         private void ClearTextControls()
         {
-            TxtDivision.Text = TxtNames.Text = "";
-            TxtDivision.ReadOnly = false;
-            TxtDivision.BackColor = Color.White;
-            TxtDivision.Focus();
+            TxtMobile.Text = TxtEmail.Text = TxtAddr.Text = TxtIdx.Text = TxtNames.Text = "";
+            TxtIdx.ReadOnly = true;
+            CboLevels.SelectedIndex = -1;
+            TxtIdx.BackColor = Color.Beige;
+            TxtNames.Focus();
         }
 
         private void SaveProcess()
@@ -101,22 +112,38 @@ namespace BookRentalShop20
 
                 if (mode == "UPDATE")
                 {
-                    cmd.CommandText = "UPDATE dbo.divtbl" +
-                                      "   SET Names = @Names" +
-                                      " WHERE Division = @Division";
+                    cmd.CommandText = "UPDATE dbo.membertbl " +
+                                      "   SET Names = @Names " +
+                                      "     , Levels = @Levels " +
+                                      "     , Addr = @Addr " +
+                                      "     , Mobile = @Mobile " +
+                                      "     , Email = @Email " +
+                                      " WHERE Idx = @Idx ";
+                    SqlParameter parmIdx = new SqlParameter("@Idx", SqlDbType.Int, 100);
+                    parmIdx.Value = TxtIdx.Text;
+                    cmd.Parameters.Add(parmIdx);
                 }
                 else if (mode == "INSERT")
                 {
-                    cmd.CommandText = "INSERT INTO dbo.divtbl(Division, Names) " +
-                                      " VALUES (@Division, @Names) ";
+                    cmd.CommandText = "INSERT INTO dbo.membertbl (Names, Levels, Addr, Mobile, Email) " +
+                                      "     VALUES (@Names, @Levels, @Addr, @Mobile, @Email) ";
                 }
-                SqlParameter parmNames = new SqlParameter("@Names", SqlDbType.NVarChar, 45);
+
+                SqlParameter parmNames = new SqlParameter("@Names", SqlDbType.VarChar, 45);
                 parmNames.Value = TxtNames.Text;
                 cmd.Parameters.Add(parmNames);
-
-                SqlParameter parmDivision = new SqlParameter("@Division", SqlDbType.Char, 4);
-                parmDivision.Value = TxtDivision.Text;
-                cmd.Parameters.Add(parmDivision);
+                SqlParameter parmLevels = new SqlParameter("@Levels", SqlDbType.Char, 1);
+                parmLevels.Value = CboLevels.SelectedItem;
+                cmd.Parameters.Add(parmLevels);
+                SqlParameter parmAddr = new SqlParameter("@Addr", SqlDbType.VarChar, 100);
+                parmAddr.Value = TxtAddr.Text;
+                cmd.Parameters.Add(parmAddr);
+                SqlParameter parmMobile = new SqlParameter("@Mobile", SqlDbType.VarChar, 13);
+                parmMobile.Value = TxtMobile.Text;
+                cmd.Parameters.Add(parmMobile);
+                SqlParameter parmEmail = new SqlParameter("@Email", SqlDbType.VarChar, 50);
+                parmEmail.Value = TxtEmail.Text;
+                cmd.Parameters.Add(parmEmail);
 
                 cmd.ExecuteNonQuery();
             }
@@ -135,7 +162,7 @@ namespace BookRentalShop20
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             mode = "DELETE";
-            if (String.IsNullOrEmpty(TxtDivision.Text) || String.IsNullOrEmpty(TxtNames.Text))
+            if (String.IsNullOrEmpty(TxtIdx.Text) || String.IsNullOrEmpty(TxtNames.Text))
             {
                 MetroMessageBox.Show(this, "빈값은 삭제할 수 없습니다", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -154,7 +181,7 @@ namespace BookRentalShop20
                                   " WHERE Division = @Division";
 
                 SqlParameter parmDivision = new SqlParameter("@Division", SqlDbType.Char, 4);
-                parmDivision.Value = TxtDivision.Text;
+                parmDivision.Value = TxtIdx.Text;
                 cmd.Parameters.Add(parmDivision);
                 cmd.ExecuteNonQuery();
             }
@@ -166,6 +193,11 @@ namespace BookRentalShop20
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

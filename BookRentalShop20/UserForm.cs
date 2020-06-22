@@ -15,7 +15,6 @@ namespace BookRentalShop20
 {
     public partial class UserForm : MetroForm
     {
-        string strConnString = "Data Source=192.168.0.20;Initial Catalog = BookRentalshopDB; Persist Security Info=True;User ID = sa; Password=p@ssw0rd!";
         string mode = "";
         public UserForm()
         {
@@ -31,7 +30,7 @@ namespace BookRentalShop20
         {
 
 
-            using (SqlConnection conn = new SqlConnection(strConnString))
+            using (SqlConnection conn = new SqlConnection(Commons.CONSTRING))
             {
                 conn.Open();
                 string strQuery = "SELECT id, userID, password, lastLoginDt, loginIpAddr " +
@@ -103,7 +102,7 @@ namespace BookRentalShop20
 
         private void SaveProcess()
         {
-            using (SqlConnection conn = new SqlConnection(strConnString))
+            using (SqlConnection conn = new SqlConnection(Commons.CONSTRING))
             {
                 if(String.IsNullOrEmpty(mode))
                 {
@@ -164,7 +163,7 @@ namespace BookRentalShop20
 
         private void DeleteProcess()
         {
-            using (SqlConnection conn = new SqlConnection(strConnString))
+            using (SqlConnection conn = new SqlConnection(Commons.CONSTRING))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
