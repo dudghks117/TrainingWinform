@@ -33,9 +33,10 @@
             this.MnuItemDivMng = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuUserDiv = new System.Windows.Forms.ToolStripMenuItem();
             this.회원관리MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.책관리BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.LblUserID = new System.Windows.Forms.Label();
-            this.책관리BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.대여관리RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,8 @@
             this.MnuItemDivMng,
             this.MnuUserDiv,
             this.회원관리MToolStripMenuItem,
-            this.책관리BToolStripMenuItem});
+            this.책관리BToolStripMenuItem,
+            this.대여관리RToolStripMenuItem});
             this.MnuMain.Name = "MnuMain";
             this.MnuMain.Size = new System.Drawing.Size(107, 24);
             this.MnuMain.Text = "메인관리(&M)";
@@ -64,23 +66,30 @@
             // MnuItemDivMng
             // 
             this.MnuItemDivMng.Name = "MnuItemDivMng";
-            this.MnuItemDivMng.Size = new System.Drawing.Size(203, 26);
+            this.MnuItemDivMng.Size = new System.Drawing.Size(224, 26);
             this.MnuItemDivMng.Text = "구분코드관리(&D)";
             this.MnuItemDivMng.Click += new System.EventHandler(this.MnuItemDivMng_Click);
             // 
             // MnuUserDiv
             // 
             this.MnuUserDiv.Name = "MnuUserDiv";
-            this.MnuUserDiv.Size = new System.Drawing.Size(203, 26);
+            this.MnuUserDiv.Size = new System.Drawing.Size(224, 26);
             this.MnuUserDiv.Text = "사용자관리(&U)";
             this.MnuUserDiv.Click += new System.EventHandler(this.MnuUserDiv_Click);
             // 
             // 회원관리MToolStripMenuItem
             // 
             this.회원관리MToolStripMenuItem.Name = "회원관리MToolStripMenuItem";
-            this.회원관리MToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.회원관리MToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.회원관리MToolStripMenuItem.Text = "회원관리(&M)";
             this.회원관리MToolStripMenuItem.Click += new System.EventHandler(this.회원관리MToolStripMenuItem_Click);
+            // 
+            // 책관리BToolStripMenuItem
+            // 
+            this.책관리BToolStripMenuItem.Name = "책관리BToolStripMenuItem";
+            this.책관리BToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.책관리BToolStripMenuItem.Text = "책관리(&B)";
+            this.책관리BToolStripMenuItem.Click += new System.EventHandler(this.책관리BToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -99,12 +108,12 @@
             this.LblUserID.Size = new System.Drawing.Size(0, 15);
             this.LblUserID.TabIndex = 4;
             // 
-            // 책관리BToolStripMenuItem
+            // 대여관리RToolStripMenuItem
             // 
-            this.책관리BToolStripMenuItem.Name = "책관리BToolStripMenuItem";
-            this.책관리BToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.책관리BToolStripMenuItem.Text = "책관리(&B)";
-            this.책관리BToolStripMenuItem.Click += new System.EventHandler(this.책관리BToolStripMenuItem_Click);
+            this.대여관리RToolStripMenuItem.Name = "대여관리RToolStripMenuItem";
+            this.대여관리RToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.대여관리RToolStripMenuItem.Text = "대여관리(&R)";
+            this.대여관리RToolStripMenuItem.Click += new System.EventHandler(this.대여관리RToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -140,6 +149,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LblUserID;
         private System.Windows.Forms.ToolStripMenuItem 책관리BToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 대여관리RToolStripMenuItem;
     }
 }
 

@@ -6,8 +6,8 @@
       xmlns:local="clr-namespace:BikeShop"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      FontSize="20"
-      Title="TestPage">
+      FontSize="10"
+      Title="TestPage" Loaded="Page_Loaded">
 
     <Grid>
         <!--<Grid Width="150" Height="150" Background="Red">
@@ -23,7 +23,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button Content ="1" Grid.Column="0" Grid.Row="0" Margin="10"></Button>
+        <!--그리드표현보기위한 예제-->
+        <!--<Button Content ="1" Grid.Column="0" Grid.Row="0" Margin="10"></Button>
         <ComboBox Grid.Column="1" Grid.Row="0" Margin="10" Grid.RowSpan="2" VerticalAlignment="top"
                  Height ="35" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <TextBlock Text="Element 1" />
@@ -34,10 +35,39 @@
         </ComboBox>
         <Button Content ="3" Grid.Column="2" Grid.Row="0" Margin="10"></Button>
         <Button Content ="4" Grid.Column="0" Grid.Row="1" Margin="10"></Button>
-        <!--<Button Content ="5" Grid.Column="1" Grid.Row="1" Margin="10"></Button>-->
+        --><!--<Button Content ="5" Grid.Column="1" Grid.Row="1" Margin="10"></Button>--><!--
         <Button Content ="6" Grid.Column="2" Grid.Row="1" Margin="10"></Button>
         <Button Content ="7" Grid.Column="0" Grid.Row="2" Margin="10"></Button>
         <Button Content ="8" Grid.Column="1" Grid.Row="2" Margin="10"></Button>
-        <Button Content ="9" Grid.Column="2" Grid.Row="2" Margin="10"></Button>
+        <Button Content ="9" Grid.Column="2" Grid.Row="2" Margin="10"></Button>-->
+
+        <!--데이터바인딩 예제-->
+        <!--<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Vertical">
+            <Slider x:Name="slider" Maximum="100" Value="10" Height="50"/>
+            <ProgressBar Value="{Binding Value, ElementName=slider}" Height="20"/>
+            <TextBlock Text="{Binding Value, StringFormat={}{0:#}, ElementName=slider}" TextAlignment="Center" FontSize="30"/>
+        </StackPanel>-->
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="3">
+            <ComboBox ItemsSource="{Binding}"  >
+                <ComboBox.ItemTemplate>
+                    <ItemContainerTemplate>
+                        <StackPanel>
+                            <TextBlock Text="Speed"/>
+                            <TextBox Text="{Binding Speed, StringFormat={}{0:#}}"/>
+                            <Slider Value="{Binding Speed, StringFormat={}{0:#}}" Maximum="100"/>
+                            <TextBlock Text="Color"/>
+                            <Border Height="10">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBox Text="{Binding Color}"/>
+                        </StackPanel>
+                    </ItemContainerTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        
     </Grid>
 </Page>

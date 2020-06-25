@@ -10,7 +10,7 @@
       Title="Menu">
 
     <Grid>
-        <Grid.RowDefinitions>
+        <Grid.RowDefinitions>   
             <RowDefinition Height="50"/>
             <RowDefinition Height="141*"/>
             <RowDefinition Height="209*"/>
@@ -24,7 +24,7 @@
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
         <Button Grid.Row="1" Grid.Column="1" Content="Product" Margin="5" />
-        <Button Grid.Row="1" Grid.Column="2" Content="Live support" Margin="5"/>
+        <Button Grid.Row="1" Grid.Column="2" Content="Live support" Margin="5" Click="Button_Click_1"/>
         <Button Grid.Row="1" Grid.Column="3" Content="Email support" Margin="5" Click="Button_Click"/>
         <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Text="BikeShop" Margin="5"
                    FontSize="36" TextAlignment="Center" VerticalAlignment="Center" Height="48"

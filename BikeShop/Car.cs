@@ -12,9 +12,17 @@ namespace BikeShop
         public string FirstName { get; set; }
         public bool HasDrivingLicense { get; set; }
     }
-    class Car
+    class Car : Notifier
     {
-        public double Speed { get; set; }
+        private double speed;
+        public double Speed { 
+            get { return speed; }
+            set
+            { 
+                speed = value;
+                OnPropertyChanged("Speed"); //  속성값이 변경되는 것을 클라이언트에 통보해줌
+            }
+        }
         public Color Color { get; set; }
         public Human Driver { get; set; }
     }
